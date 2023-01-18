@@ -18,7 +18,13 @@
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "ecmaFeatures": {
+        "requireConfigFile": false,
+        "babelOptions": {
+            "parserOpts": {
+                "plugins": ["jsx"]
+            }
+        },
+            "ecmaFeatures": {
             "jsx": true
         }
     },
