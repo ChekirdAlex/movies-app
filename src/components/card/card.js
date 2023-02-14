@@ -3,13 +3,17 @@ import './card.css';
 import { format } from 'date-fns';
 
 import { cutDescription } from '../../helpers';
+import Loader from '../loader';
 
-function Card({ itemProps }) {
+function Card({ itemProps, loading }) {
   const movieDescription = cutDescription(itemProps.description);
-  const movieReleaseDate = format(new Date(Date.parse(itemProps.releaseDate)), 'MMMM d, y');
+  const movieReleaseDate = itemProps.releaseDate
+    ? format(new Date(Date.parse(itemProps.releaseDate)), 'MMMM d, y')
+    : null;
 
   return (
     <div className="movie-card">
+      {loading ? <Loader /> : null}
       <div className="movie-poster">
         <img src={itemProps.poster} alt="Movie Poster" className="poster" />
       </div>
